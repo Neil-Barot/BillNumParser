@@ -6,7 +6,7 @@ Parses and validates bill numbers from strings.
 
 ```bash
 # Clone repository
-git clone https://github.com/username/project-name.git
+git clone [https://github.com/username/project-name.git](https://github.com/Neil-Barot/BillNumParser.git)
 
 # Navigate into folder
 cd BillNumParser
