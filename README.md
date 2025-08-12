@@ -39,9 +39,9 @@ Formats the bill number into it's short form: ex. hr 0205 -> HR 205
 ### Properties
 
 #### `IsValid` *(boolean, read-only)*
-Gets whether the bill number is valid.
+Shows whether the bill number is valid.
 
 **Example**
 ```csharp
 BillNumber example = new BillNumber("hb 0034");
-Console.writeline(example.getIsValid); // 'true'
+Console.writeline(example.getIsValid()); // 'true'
