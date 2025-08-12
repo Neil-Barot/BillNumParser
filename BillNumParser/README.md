@@ -17,6 +17,14 @@ dotnet restore
 # Build
 dotnet build
 ```
+## Public Constructors
+
+### `BillNumber(string id)`
+Creates a new `BillNumber` object from a given string.
+
+**Parameters**
+- `id` *(string)* — The raw bill id to parse and validate.  
+  Example formats: `"hr 0205"`, `"HB0034"`
 
 ## Public Methods & Properties
 
