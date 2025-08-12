@@ -13,7 +13,7 @@ public class BillNumber
     private string _chamber;
     private string _type;
     private int _suffix;
-    public bool IsValid;
+    public bool IsValid { get; }
 
 
 
@@ -24,6 +24,8 @@ public class BillNumber
 
     }
 
+    // Description: Formats the bill in long form: ex. hr 0205 -> HR00205
+    // Returns: Formatted bill number
     public string BillNumberLong()
     {
         CheckValid();
@@ -40,6 +42,8 @@ public class BillNumber
         return id.ToUpper();
     }
 
+    // Description: Formats the bill in short form: ex. hr0205 -> HR 205
+    // Returns: Formatted bill number
     public string BillNumberShort()
     {
         CheckValid();
@@ -47,6 +51,7 @@ public class BillNumber
         return id.ToUpper();
     }
 
+    // Description: Used for exception handling
     private void CheckValid()
     {
         if (!IsValid)
@@ -55,6 +60,8 @@ public class BillNumber
         }
     }
 
+    // Description: Parsing logic for each section of the id
+    // Returns: boolean value based on validity of the id
     private static bool ParseId(string id, out string chamber, out string type, out int suffix)
     {
         chamber = null;
@@ -86,28 +93,30 @@ public class BillNumber
             return false;
         }
 
-
-
         return true;
     }
 
+    // Description: Parsing logic for the tail portion of the id. Finds the Suffix.
+    // Returns: boolean value based on validity of the suffix
     private static bool parseSuffix(string id, out int suffix)
     {
         suffix = -1;
 
-        int maxWhiteSpaceCount = 1;
-        int maxDigitCount = 5;
+        int maxWhiteSpaceCount = 1; // Number of allowed whitespaces before the suffix
+        int maxDigitCount = 5; // The number of digits that the tail can contain (including leading 0s)
         bool foundDigit = false;
         var tempSuffix = new StringBuilder();
 
         foreach (char letter in id)
         {
+            // Verifies that the letter is a digit and that the maxDigitCount isn't exceeded
             if (Char.IsDigit(letter) && maxDigitCount > 0)
             {
                 tempSuffix.Append(letter);
                 foundDigit = true;
                 maxDigitCount--;
             }
+            // Verifies that whitespace is only found before the digits and that maxWhiteSpaceCount isn't exceeded
             else if (Char.IsWhiteSpace(letter) && !foundDigit && maxWhiteSpaceCount > 0)
             {
                 maxWhiteSpaceCount--;
@@ -120,14 +129,23 @@ public class BillNumber
 
         suffix = int.Parse(tempSuffix.ToString());
 
-        if (suffix <= 0) {
+        // Verifies that the tail doesn't consist of only 0's
+        if (suffix <= 0)
+        {
             return false;
         }
 
         return true;
     }
-    
 
+    // Description: Parsing logic for the head portion of the id.
+    // Parameters: 
+    //      - id: the bill number
+    //      - set: set corresponding to the item you're looking for (ex. _validChamber)
+    //      - token: returns the match that was found between a substring of the id and the set 
+    //               (ex. returns 'h' if set = _validChamber and id = 'hr05')
+    //      - trimmedId: returns id with the token removed from the front (ex. returns 'r05' if token = 'h')
+    // Returns: boolean value based on validity of the suffix
     private static bool parseHead(string id, HashSet<string> set, out string token, out string trimmedId)
     {
         token = null;
@@ -136,6 +154,8 @@ public class BillNumber
         for (int pointer = 0; pointer < id.Length; pointer++)
         {
             var temp = id.Substring(0, pointer);
+            
+            // Checks if the set contains the current substring of id
             if (set.Contains(temp))
             {
                 token = temp;

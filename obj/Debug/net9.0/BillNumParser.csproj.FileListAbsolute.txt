@@ -9,3 +9,4 @@ C:\Users\neilr\FullStackProjects\DotNetProjects\BillNumParser\obj\Debug\net9.0\B
 C:\Users\neilr\FullStackProjects\DotNetProjects\BillNumParser\obj\Debug\net9.0\refint\BillNumParser.dll
 C:\Users\neilr\FullStackProjects\DotNetProjects\BillNumParser\obj\Debug\net9.0\BillNumParser.pdb
 C:\Users\neilr\FullStackProjects\DotNetProjects\BillNumParser\obj\Debug\net9.0\ref\BillNumParser.dll
+C:\Users\neilr\FullStackProjects\DotNetProjects\BillNumParser\obj\Debug\net9.0\BillNumParser.sourcelink.json
