@@ -19,7 +19,7 @@ dotnet build
 ```
 ## Public Constructors
 
-### `BillNumber(string id)`
+#### `BillNumber(string id)`
 Creates a new `BillNumber` object from a given string.
 
 **Parameters**
