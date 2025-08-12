@@ -9,14 +9,14 @@ It ensures:
 ---
 
 ## Test Framework
-- **Language:** C# 
+- **Language:** C# (.NET 9)
 - **Testing Framework:** xUnit  
 - **Build Tool:** .NET CLI  
 
 ---
 
 ## Prerequisites
-- [.NET SDK 6.0+](https://dotnet.microsoft.com/download) installed  
+- .NET SDK of 9.0.304 or a compatible version 
 - All NuGet dependencies restored (`dotnet restore`)  
 - Any required environment variables or test configuration files in place  
 
